@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company List Viewer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .company-list {
+            margin-top: 20px;
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .company-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .company-card:hover {
+            transform: translateY(-5px);
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Company List Viewer</h1>
+    <input type="text" id="filterInput" placeholder="Search companies by name... (Regex supported)" oninput="filterCompanies()">
+    <div class="company-list" id="companyList"></div>
+
+    <script>
+        let companies = [];
+
+        function loadStaticFile() {
+            fetch('companies.json')
+                .then(response => response.json())
+                .then(data => {
+                    companies = data;
+                    renderCompanies(companies);
+                })
+                .catch(err => {
+                    console.error("Error loading JSON file:", err);
+                    alert("Failed to load companies.json");
+                });
+        }
+
+        function renderCompanies(companyList) {
+            const listContainer = document.getElementById('companyList');
+            listContainer.innerHTML = '';
+            companyList.forEach(company => {
+                const card = document.createElement('div');
+                card.className = 'company-card';
+                
+                const name = document.createElement('h2');
+                name.textContent = company.name;
+
+                const link = document.createElement('a');
+                link.href = company.url;
+                link.target = '_blank';
+                link.textContent = 'Visit Website';
+
+                card.appendChild(name);
+                card.appendChild(link);
+                listContainer.appendChild(card);
+            });
+        }
+
+        function filterCompanies() {
+            const input = document.getElementById('filterInput').value;
+            try {
+                const regex = new RegExp(input, 'i');
+                const filtered = companies.filter(c => regex.test(c.name));
+                renderCompanies(filtered);
+            } catch (e) {
+                console.error('Invalid regex:', e);
+            }
+        }
+
+        window.onload = loadStaticFile;
+    </script>
+</body>
+</html>
