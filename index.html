@@ -60,103 +60,21 @@
     <div class="company-list" id="companyList"></div>
 
     <script>
-        let companies = 
-        
-[
-    {
-        "name": "Tata Consultancy Services (TCS)",
-        "url": "https://www.tcs.com/careers"
-    },
-    {
-        "name": "Infosys",
-        "url": "https://www.infosys.com/careers/"
-    },
-    {
-        "name": "Wipro",
-        "url": "https://careers.wipro.com/"
-    },
-    {
-        "name": "HCL Technologies",
-        "url": "https://www.hcltech.com/careers"
-    },
-    {
-        "name": "Tech Mahindra",
-        "url": "https://careers.techmahindra.com/"
-    },
-    {
-        "name": "Cognizant",
-        "url": "https://careers.cognizant.com/global/en"
-    },
-    {
-        "name": "Accenture India",
-        "url": "https://www.accenture.com/in-en/careers"
-    },
-    {
-        "name": "Capgemini India",
-        "url": "https://www.capgemini.com/in-en/careers/"
-    },
-    {
-        "name": "Mindtree",
-        "url": "https://www.ltimindtree.com/careers/"
-    },
-    {
-        "name": "Zoho Corporation",
-        "url": "https://www.zoho.com/careers/"
-    },
-    {
-        "name": "Freshworks",
-        "url": "https://www.freshworks.com/company/careers/"
-    },
-    {
-        "name": "Oracle India",
-        "url": "https://www.oracle.com/in/corporate/careers/"
-    },
-    {
-        "name": "IBM India",
-        "url": "https://www.ibm.com/in-en/employment/"
-    },
-    {
-        "name": "Google India",
-        "url": "https://careers.google.com/locations/india/"
-    },
-    {
-        "name": "Microsoft India",
-        "url": "https://careers.microsoft.com/"
-    },
-    {
-        "name": "Amazon India",
-        "url": "https://www.amazon.jobs/en/locations/india"
-    },
-    {
-        "name": "Flipkart",
-        "url": "https://www.flipkartcareers.com/"
-    },
-    {
-        "name": "Paytm",
-        "url": "https://paytm.com/careers/"
-    },
-    {
-        "name": "Ola",
-        "url": "https://careers.olacabs.com/"
-    },
-    {
-        "name": "Swiggy",
-        "url": "https://careers.swiggy.com/"
-    }
-];
+        let companies;
 
-        // function loadStaticFile() {
-        //     fetch('companies.json')
-        //         .then(response => response.json())
-        //         .then(data => {
-        //             companies = data;
-        //             renderCompanies(companies);
-        //         })
-        //         .catch(err => {
-        //             console.error("Error loading JSON file:", err);
-        //             alert("Failed to load companies.json");
-        //         });
-        // }
+        function loadStaticFile() {
+            companies = [{"name":"Tata Consultancy Services (TCS)","url":"https://www.tcs.com/careers"},{"name":"Infosys","url":"https://www.infosys.com/careers/"},{"name":"Wipro","url":"https://careers.wipro.com/"},{"name":"HCL Technologies","url":"https://www.hcltech.com/careers"},{"name":"Tech Mahindra","url":"https://careers.techmahindra.com/"},{"name":"Cognizant","url":"https://careers.cognizant.com/global/en"},{"name":"Accenture India","url":"https://www.accenture.com/in-en/careers"},{"name":"Capgemini India","url":"https://www.capgemini.com/in-en/careers/"},{"name":"Mindtree","url":"https://www.ltimindtree.com/careers/"},{"name":"Zoho Corporation","url":"https://www.zoho.com/careers/"},{"name":"Freshworks","url":"https://www.freshworks.com/company/careers/"},{"name":"Oracle India","url":"https://www.oracle.com/in/corporate/careers/"},{"name":"IBM India","url":"https://www.ibm.com/in-en/employment/"},{"name":"Google India","url":"https://careers.google.com/locations/india/"},{"name":"Microsoft India","url":"https://careers.microsoft.com/"},{"name":"Amazon India","url":"https://www.amazon.jobs/en/locations/india"},{"name":"Flipkart","url":"https://www.flipkartcareers.com/"},{"name":"Paytm","url":"https://paytm.com/careers/"},{"name":"Ola","url":"https://careers.olacabs.com/"},{"name":"Swiggy","url":"https://careers.swiggy.com/"}]
+            // fetch('companies.json')
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         companies = data;
+            //         renderCompanies(companies);
+            //     })
+            //     .catch(err => {
+            //         console.error("Error loading JSON file:", err);
+            //         alert("Failed to load companies.json");
+            //     });
+        }
 
         function renderCompanies(companyList) {
             const listContainer = document.getElementById('companyList');
